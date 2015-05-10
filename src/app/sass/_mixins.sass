@@ -1,0 +1,138 @@
+@import variables
+// @import compass/css3
+
+=respond-to($media)
+  @media only screen and #{$media}
+    @content
+
+// $sprites-768: sprite-map("sprites-768/*.png")
+// $sprites-768-retina: sprite-map("sprites-768-retina/*.png")
+// $sprites-960: sprite-map("sprites-960/*.png")
+// $sprites-960-retina: sprite-map("sprites-960-retina/*.png")
+// $sprites-1440: sprite-map("sprites-1440/*.png")
+// $sprites-1440-retina: sprite-map("sprites-1440-retina/*.png")
+$sprites: sprite-map("sprites/*.png")
+$sprites-retina: sprite-map("sprites-retina/*.png")
+
+=sprite-image($name)
+  // background-image: sprite-url($sprites)
+  // background-position: sprite-position($sprites, $name)
+  // background-repeat: no-repeat
+  // display: block
+  // height: image-height(sprite-file($sprites, $name))
+  // width: image-width(sprite-file($sprites, $name))
+  // @media #{$retina}
+  //   @if (sprite-position($sprites, $name) != sprite-position($sprites-retina, $name))
+  //     $ypos: round(nth(sprite-position($sprites-retina, $name), 2) / 2)
+  //     background-position: 0 $ypos
+  //   +background-size(image-width(sprite-path($sprites)) image-height(sprite-path($sprites)))
+  //   background-image: sprite-url($sprites-retina)
+  // @media #{$phone}
+  //   background-image: sprite-url($sprites-768)
+  //   background-position: sprite-position($sprites-768, $name)
+  //   background-repeat: no-repeat
+  //   display: block
+  //   height: image-height(sprite-file($sprites-768, $name))
+  //   width: image-width(sprite-file($sprites-768, $name))
+  //   @media #{$retina}
+  //     @if (sprite-position($sprites-768, $name) != sprite-position($sprites-768-retina, $name))
+  //       $ypos: round(nth(sprite-position($sprites-768-retina, $name), 2) / 2)
+  //       background-position: 0 $ypos
+  //     +background-size(image-width(sprite-path($sprites-768)) image-height(sprite-path($sprites-768)))
+  //     background-image: sprite-url($sprites-768-retina)
+  // @media #{$old}
+  //   background-image: sprite-url($sprites-960)
+  //   background-position: sprite-position($sprites-960, $name)
+  //   background-repeat: no-repeat
+  //   display: block
+  //   height: image-height(sprite-file($sprites-960, $name))
+  //   width: image-width(sprite-file($sprites-960, $name))
+  //   @media #{$retina}
+  //     @if (sprite-position($sprites-960, $name) != sprite-position($sprites-960-retina, $name))
+  //       $ypos: round(nth(sprite-position($sprites-960-retina, $name), 2) / 2)
+  //       background-position: 0 $ypos
+  //     +background-size(image-width(sprite-path($sprites-960)) image-height(sprite-path($sprites-960)))
+  //     background-image: sprite-url($sprites-960-retina)
+  // @media #{$medium}
+  //   background-image: sprite-url($sprites)
+  //   background-position: sprite-position($sprites, $name)
+  //   background-repeat: no-repeat
+  //   display: block
+  //   height: image-height(sprite-file($sprites, $name))
+  //   width: image-width(sprite-file($sprites, $name))
+  //   @media #{$retina}
+  //     @if (sprite-position($sprites, $name) != sprite-position($sprites-retina, $name))
+  //       $ypos: round(nth(sprite-position($sprites-retina, $name), 2) / 2)
+  //       background-position: 0 $ypos
+  //     // Grab size of non-retina sprite image.
+  //     +background-size(image-width(sprite-path($sprites)) image-height(sprite-path($sprites)))
+  //     background-image: sprite-url($sprites-retina)
+  // @media #{$mediumlarge}
+  //   background-image: sprite-url($sprites-1440)
+  //   background-position: sprite-position($sprites-1440, $name)
+  //   background-repeat: no-repeat
+  //   display: block
+  //   height: image-height(sprite-file($sprites-1440, $name))
+  //   width: image-width(sprite-file($sprites-1440, $name))
+  //   @media #{$retina}
+  //     @if (sprite-position($sprites-1440, $name) != sprite-position($sprites-1440-retina, $name))
+  //       $ypos: round(nth(sprite-position($sprites-1440-retina, $name), 2) / 2)
+  //       background-position: 0 $ypos
+  //     // Grab size of non-retina sprite image.
+  //     +background-size(image-width(sprite-path($sprites-1440)) image-height(sprite-path($sprites-1440)))
+  //     background-image: sprite-url($sprites-1440-retina)
+=p($size)
+  @if $size == 4
+    font-size: 10px
+    font-weight: 100
+    +respond-to($large-desktop)
+      font-size: 12px
+  @if $size == 3
+    font-size: 12px
+    line-height: 14px
+    +respond-to($large-desktop)
+      font-size: 14px
+      line-height: 18px
+  @if $size == 2
+    text-transform: uppercase
+    font-size: 14px
+    +respond-to($large-desktop)
+      font-size: 16px
+  @if $size == 1
+    text-transform: uppercase
+    font-size: 18px
+    line-height: 24px
+    font-weight: 100
+    +respond-to($large-desktop)
+      font-size: 24px
+      line-height: 30px
+
+=h($size)
+  font-weight: 100
+  text-transform: uppercase
+  @if $size == 1
+    font-size: 48px
+    letter-spacing: -1px
+    line-height: 60px
+    +respond-to($large-desktop)
+      font-size: 60px
+
+=percentage($type, $value)
+  #{$type}: $value
+  +respond-to($tablet-portrait)
+    #{$type}: $value * .8
+  +respond-to($tablet-landscape-desktop)
+    #{$type}: $value * .9
+  +respond-to($large-desktop)
+    #{$type}: $value
+  +respond-to($phone)
+    #{$type}: $value * .6
+  +respond-to($iphone)
+    #{$type}: $value * .7
+  +respond-to($ipad)
+    #{$type}: $value * 1.1
+
+
+// scale
+=scale($scale)
+  @include transform(scale($scale))

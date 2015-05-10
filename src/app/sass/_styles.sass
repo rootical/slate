@@ -1,0 +1,531 @@
+@import settings
+@import ../../../bower_components/bourbon/app/assets/stylesheets/bourbon
+@import mixins
+@import loading
+@import variables
+@import typography
+
+body, html
+  height: 100%
+  min-height: 100%
+
+button, .button
+  border-color: $green
+  background-color: $green
+  color: #fff
+  border: none
+  font-weight: 300
+  font-size: rem-calc(13)
+  text-transform: uppercase
+  &:hover
+    border: none
+    background-color: $gray-lighter
+    color: #fff
+  &.transparent
+    background-color: transition
+    &:hover
+      background-color: $gray-lighter
+.no-js
+  padding-top: 106px
+
+.loading
+  background-color: #d8111a
+  .sticky-menu, #footer
+    visibility: hidden !important
+  .modal-loading
+    display: block
+
+.modal-loading
+  display: none
+
+.wrapper
+  overflow: hidden
+
+.top-bar
+  z-index: 11
+  // padding: 0 $column-gutter / 2
+  .name
+    h1
+      a
+        +sprite-image(logo)
+        text-indent: -9999px
+        margin-top: 10px
+  &.expanded
+    background-color: #fff
+
++respond-to($up-to-desktop)
+  .top-bar
+    background-color: #fff
+    box-shadow: 0 0 2px 0 rgba(0,0,0,.6) // drop shadow
+    padding: $column-gutter / 4 $column-gutter / 2
+    height: 44px
+    line-height: 44px
+    ul
+      li
+        > a
+          font-size: 1rem
+          color: $red
+          padding: 0
+        &.active
+          a
+            background-color: $red
+            padding: 0  $column-gutter / 4
+            &:hover
+              background-color: $red
+    .name
+      height: auto
+      h1
+        a
+          margin-top: 0
+          +sprite-image(logo2)
+          +scale(0.7)
+          margin-left: -15px
+          margin-top: -3px
+    .top-bar-section
+      margin-top: .5rem
+
+    .title-area
+      position: static
+  #pizza-lovers
+    img
+      margin-top: 2rem
+
+#slide-1
+  .skrollable-after
+    [data-magellan-expedition]
+      background-color: rgba(255,255,255,0.8)
+      box-shadow: 0 0 2px 0 rgba(0,0,0,.6) // drop shadow
+      border: 1px solid #dad7d7
+      border-width: 1px 0
+    .top-bar
+      height: auto
+      line-height: 1
+      padding: 10px 0
+      .name
+        height: auto
+        h1
+          a
+            +sprite-image(logo2)
+            margin-top: 0
+
+      .sub-nav
+        li
+          margin-bottom: 0
+          a
+            color: #d30000
+            line-height: 1.4
+          &:first-child
+            margin-left: 0
+        li.active
+          a
+            background-color: #ff4b33 // color overlay
+            border: 2px solid #d30000 // stroke
+            color: #fff
+            line-height: 1.4
+            &:hover
+              background-color: #d30000
+            +respond-to($large-desktop)
+              font-size: 21px
+  .scrollable-between, .scrollable
+    [data-magellan-expedition]
+      display: none
+    .top-bar-section
+      li.active
+        a
+          background-color: transparent !important
+
+.loaded section, .no-js section
+  opacity: 1
+  +transition(opacity 300ms ease-out)
+
+[data-magellan-expedition-clone]
+  display: none
+
+section.home-slide
+  opacity: 0
+  height: 100%
+  min-height: 320px // iphone landscape height
+  box-shadow: 0 0 2px 0 rgba(0,0,0,.3) // drop shadow
+  &.odd
+    background-color: #fff
+  &.even
+    background-color: rgb(249, 245, 245)
+
+.loaded section, .no-js section
+  opacity: 1
+  +transition(opacity 300ms ease-out)
+
+.bcg
+  background-position: center center
+  background-repeat: no-repeat
+  // background-attachment: fixed
+  background-size: cover
+  height: 100%
+  width: 100%
+  position: relative
+  min-height: 480px
+  +respond-to($ipad-portrait)
+    min-height: 1000px
+  +respond-to($ipad-landscape)
+    min-height: 768px
+// Slide 1
+
+#slide-1
+  +respond-to($phone)
+    min-height: 480px
+  +respond-to($iphone)
+    min-height: 510px
+  // TODO handle iphone's landscape and portreit cases
+  +respond-to($ipad-portrait)
+    min-height: 1000px
+  +respond-to($ipad-landscape)
+    min-height: 768px
+  .bcg
+    background-image: url('https://s3.amazonaws.com/mezuka-launch/img/pizza.jpg')
+
+  .slide-content
+    text-align: center
+    font-family: 'Georgia'
+    font-style: italic
+    color: #fff
+    p
+      color: #fff
+      text-align: center
+      @extend .whitney-bold
+      +percentage(font-size, 31px)
+    h2
+      text-align: center
+      font-weight: 100
+      color: #fff
+      +percentage(font-size, 55px)
+    h1
+      color: #fff
+      text-align: center
+    input, button
+      padding: 0 1rem
+      +percentage(font-size, 1.5rem)
+      +percentage(height, 3rem)
+    button, .button
+      text-align: center
+      font-style: normal
+      min-width: 160px
+      color: #fff
+      +respond-to($large-desktop)
+        min-width: 170px
+      +respond-to($ipad)
+        min-width: 170px
+  &.contact-conformation
+    h1
+      +percentage(font-size, 35px)
+    h2
+      +percentage(font-size, 30px)
+    p
+      +percentage(font-size, 20px)
+      button, .button
+        margin-bottom: 0
+    +respond-to($up-to-desktop)
+      h1
+        font-size: 25px
+      h2
+        font-size: 20px
+      p
+        font-size: 16px
+      .slide-container
+        padding-top: 0
+    .slide-content
+      opacity: 1 !important
+
+  .slide-container:before
+    margin-top: - $topbar-height
+
+#stay-tuned
+  padding: 0 $column-gutter / 2
+  input
+    font-style: italic
+  .submit-column
+    padding-left: 0
+    text-align: center
+
+#slide-3
+  +respond-to($large-desktop)
+    img
+      +percentage(margin-top, 30px)
+
+#slide-6
+  h3
+    margin: 30px 0
+    line-height: 1
+    text-align: center
+  +respond-to($ipad-portrait)
+    min-height: 1000px
+  +respond-to($ipad-landscape)
+    min-height: 768px
+
+#slide-10
+  h3
+    +percentage(margin-bottom, 25px)
+  label
+    +percentage(font-size, 1.3rem)
+    color: $gray
+    +respond-to($phone)
+      font-size: 1rem
+
+  button[type=submit]
+    padding: .6rem 2rem
+
+.slide-container
+  text-align: center
+  position: relative
+  width: 100%
+  height: 100%
+  clear: left
+  overflow: hidden
+  &:before
+    content: ''
+    display: inline-block
+    height: 100%
+    min-height: 100%
+    vertical-align: middle
+    width: 1px
+    margin-right: -0.25em
+    +respond-to($ipad)
+      display: none
+    +respond-to($iphone)
+      display: none
+    +respond-to($phone)
+      display: none
+    +respond-to($up-to-desktop)
+      width: auto
+
+.slide-content
+  display: inline-block
+  vertical-align: middle
+  &.align-top
+    vertical-align: top
+  a
+    color: #2869ac
+
++respond-to($phone)
+  .slide-container
+    height: auto
+  section.home-slide
+    height: auto
+
+button[type=submit], .button-green
+  border: 1px solid #43af27
+  background-clip: padding-box
+  background-color: #65dd43
+  color: #fff
+  &:hover
+    background-color: #0A8F00
+    border-color: #65dd43
+
+#logo2
+  +sprite-image(logo2)
+  margin-left: $column-gutter / 2
+
+h2.orange
+  color: $orange
+  font-weight: bold
+  +percentage(font-size, 3rem)
+  +percentage(line-height, 3.1rem)
+  margin: 0
+  text-transform: uppercase
+  +respond-to($phone)
+    margin: 5px 0
+
+h3
+  +percentage(font-size, 2rem)
+  color: $gray-text
+  &.subheader
+    line-height: 1
+    +percentage(margin-top, 1rem)
+    +percentage(margin-bottom, 1rem)
+  &.offset
+    +respond-to($large-desktop)
+      margin-bottom: 45px
+      margin-top: 50px
+    +respond-to($tablet-landscape-desktop)
+      margin-bottom: 20px
+      margin-top: 25px
+
+p
+  color: $gray
+  +percentage(font-size, 1.5rem)
+  // +percentage(line-height, 1.4)
+  +respond-to($large-desktop)
+    margin-bottom: 1rem
+  +respond-to($phone)
+    margin-bottom: 1rem
+    font-size: 1rem
+
+.screenshot
+  box-shadow: 0 0 6px rgba(0,0,0,.17)
+
+.slide-content.row
+  *
+    text-align: left
+  ul.circles
+    text-align: center
+
+ul.circles
+  text-align: center
+  clear: left
+  margin-left: 0
+  li
+    display: inline-block
+    padding: 3px
+    border-radius: 100%
+    box-shadow: 0 0 4px rgba(0,0,0,.17)
+    position: relative
+    +percentage(margin-left, 60px)
+    &:first-child
+      margin-left: 0
+    &:after
+      content: ''
+      width: 28px
+      height: 28px
+      display: block
+      border-radius: 100%
+    &.awaiting:after
+      background-color: #d90000
+    &.in-progress:after
+      background-color: #ffd800
+    &.complete:after
+      background-color: #6ed300
+    &.gray:after
+      background-color: #aaaaaa
+
+.pizza-status
+  position: relative
+  +respond-to($phone)
+    overflow: hidden
+  +respond-to($large-desktop)
+    img
+      position: absolute
+      right: 0
+      top: 0
+      max-width: 898px
+
+.relative
+  position: relative
+  z-index: 1
+.inline-block
+  display: inline-block
+
+.help-tip
+  font-size: .9rem
+  margin-top: 1.5rem
+  display: block
+
+.employee
+  +percentage(font-size, 1.3rem)
+  color: $gray // text color
+  +percentage(margin-top, 1.2rem)
+  &:nth-child(2n)
+    clear: left
+  +respond-to($phone)
+    font-size: .9rem
+  img
+    width: 115px
+    margin-right: 15px
+    float: left
+    +respond-to($phone)
+      width: 65px
+      margin-right: 5px
+    +respond-to($tablet-landscape-desktop)
+      width: 100px
+  .name
+    +percentage(font-size, 1.7rem)
+  .position
+    +percentage(font-size, 1.7rem)
+    font-style: italic
+    margin: 10px 0
+    +respond-to($phone)
+      margin: 5px 0
+
+iframe
+  +respond-to($large-desktop)
+    margin-top: 30px
+  width: 100% !important
+
+#contact-us
+  textarea
+    max-width: 100%
+
+.contact-info
+  color: $gray
+  +percentage(font-size, 1.5rem)
+  > *
+    +percentage(margin-top, 1.5rem)
+
+
+footer#footer
+  font-size: .9rem
+  color: $gray
+  +percentage(padding-top, 20px)
+  +percentage(padding-bottom, 25px)
+  line-height: 1.6
+  ul
+    margin: 0
+    padding: 0
+    li
+      &:first-child
+        margin-left: 0
+      +respond-to($up-to-desktop)
+        display: block
+        float: none
+        margin-left: 0
+
+  a
+    color: $gray
+
+.submit-column
+  padding-left: 0
+
+// Foundation don't want to take global
+// why?
+input, button, textarea, select, .button
+  border-radius: 3px
+
+.error
+  +border-bottom-radius(3px)
+
++respond-to($phone)
+  .home-slide
+    padding: 1rem 0
+    height: auto !important
+  #slide-1
+    .slide-container
+      margin-top: 5rem
+
++respond-to($iphone-landscape)
+  #slide-1
+    .slide-container
+      margin-top: 0
+
++respond-to($ipad)
+  #slide-1
+    padding: 0
+    .slide-container
+      margin-top: 18rem
+  .home-slide
+    padding: 2rem 0
+
++respond-to($tablet-portrait)
+  .home-slide
+    padding: 1.5rem 0
+
++respond-to($up-to-desktop)
+  #slide-1
+    padding: 0
+    .slide-container
+      padding-top: 5rem
+
++respond-to($large-desktop)
+  .input-column
+    padding-right: 0
+
+
+.par-img
+  position: relative
